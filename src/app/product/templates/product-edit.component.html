@@ -1,0 +1,46 @@
+<div class="card" *ngIf="product">
+  <div class="card-header">
+    <span class="col-12 offset-5">
+      Chỉnh sửa tuor du lịch
+    </span>
+  </div>
+  <form  [formGroup]="productForm" (ngSubmit)="Update()">
+    <div class="card-body">
+      <div class="mb-3">
+        <label for="id" class="form-label">Id</label>
+        <fieldset disabled>
+          <input type="text" formControlName="id" name="id" id="id" class="form-control">
+        </fieldset>
+        <small id="IdHid" class="form-text text-primary">Id tuor không thể thay đổi!</small>
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Tên</label>
+        <input type="text" class="form-control" formControlName="name" name="name" id="name" aria-describedby="nameHid" placeholder="Tên tuor">
+        <div *ngIf="productForm.invalid && (productForm.dirty || productForm.touched)">
+          <small class="form-text text-danger" *ngIf="productForm.get('name')?.errors?.['required'] ">Trường Tên bắt buộc nhập</small>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="price" class="form-label">Giá</label>
+        <input type="text" class="form-control" formControlName="price" name="price" id="price" aria-describedby="priceHid" placeholder="Gía">
+        <div *ngIf="productForm.invalid && (productForm.dirty || productForm.touched)">
+          <small class="form-text text-danger" *ngIf="productForm.get('price')?.errors?.['required'] ">Trường giá bắt buộc</small>
+          <small class="form-text text-danger" *ngIf="productForm.get('price')?.errors?.['pattern'] ">Trường giá phải là kiểu số</small>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Mô tả</label>
+        <textarea type="text" class="form-control" formControlName="description" name="description" id="description" aria-describedby="descriptionHid"
+          placeholder="Mô tả"></textarea>
+          <div *ngIf="productForm.invalid && (productForm.dirty || productForm.touched)">
+            <small class="form-text text-danger" *ngIf="productForm.get('description')?.errors?.['required'] ">Trường mô tả bắt buộc</small>
+          </div>
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+      <button type="submit" [disabled]="!productForm.valid" class="btn btn-primary">Lưu</button>
+      <a [routerLink]="['/']" class="btn btn-danger">Hủy</a>
+    </div>
+  </form>
+</div>
+

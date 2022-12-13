@@ -1,0 +1,39 @@
+<div class="contaner">
+  <div class="card">
+
+
+
+    <div class="card-header">
+      <a [routerLink]="['/add']" class="btn btn-primary">Thêm</a>
+      <div class="row">
+        <span class="col-12 offset-5">List Tour </span>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style="width: 5%" ></th>
+            <th style="width: 10%" >ID</th>
+            <th style="width: 20%">Tên</th>
+            <th style="width: 20%">Giá</th>
+            <th style="width: 20%"></th>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of products;let id = index">
+            <td></td>
+            <td>{{id+1}}</td>
+            <td><a [routerLink]="[item.id]">{{item.name}}</a></td>
+            <td>{{item.price|number}} VND</td>
+            <td>
+              <span class="p-3 m-0 border-0 bd-example">
+                <button [routerLink]="[item.id+'/edit']" class="btn btn-warning">Edit</button>
+              </span>
+              <button [routerLink]="['/delete/'+item.id]" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
