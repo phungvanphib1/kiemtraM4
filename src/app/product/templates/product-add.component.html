@@ -26,7 +26,7 @@
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Mô Tả</label>
-        <textarea type="text" class="form-control" formControlName="description" name="description" id="description" aria-describedby="descriptionHid"
+        <textarea style="height: 100px" type="text" class="form-control" formControlName="description" name="description" id="description" aria-describedby="descriptionHid"
           placeholder="Mô Tả"></textarea>
           <div *ngIf="productForm.invalid && (productForm.dirty || productForm.touched)">
             <small class="form-text text-danger" *ngIf="productForm.get('description')?.errors?.['required'] ">Trường mô tả bắt buộc</small>
